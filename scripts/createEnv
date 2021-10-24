@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "DISCORD_BOT_TOKEN=$1" > ../.env
