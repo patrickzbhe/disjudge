@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/ec2-user/app/
+cd /home/ec2-user/disjudge/
 source environment/bin/activate
-cd /home/ec2-user/app/src/
+cd /home/ec2-user/disjudge/src/
 python bot.py
