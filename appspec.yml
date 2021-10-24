@@ -9,6 +9,9 @@ hooks:
    - location: scripts/install_dependencies
      timeout: 300
      runas: root
+   - location: scripts/createEnv
+     timeout: 300
+     runas: root
   ApplicationStart:
    - location: scripts/start
      timeout: 300
