@@ -2,4 +2,4 @@
 cd /home/ec2-user/disjudge/
 source environment/bin/activate
 cd /home/ec2-user/disjudge/src/
-python bot.py
+python3 bot.py
