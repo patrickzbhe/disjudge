@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "DISCORD_BOT_TOKEN=$1" > /home/ec2-user/.env
+git archive --remote=git@github.com:patrickzebinghe/disjudge-secrets.git HEAD:.env ../env | tar -x
