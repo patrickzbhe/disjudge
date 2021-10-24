@@ -1,2 +1,2 @@
 #!/bin/bash
-git archive --remote=git@github.com:patrickzebinghe/disjudge-secrets.git HEAD:.env ../env | tar -x
+git archive --remote=git@github.com:patrickzebinghe/disjudge-secrets.git HEAD:.env ./.env | tar -x

@@ -2,5 +2,6 @@
 sudo pip3 install virtualenv
 cd /home/ec2-user/disjudge
 virtualenv environment
+git archive --remote=git@github.com:patrickzebinghe/disjudge-secrets.git HEAD:.env ./.env | tar -x
 source environment/bin/activate
 pip3 install -r ./src/requirements.txt
