@@ -49,5 +49,5 @@ jobs:
             --application-name 	disjudge-deploy \
             --deployment-group-name disjudge-deploy-group \
             --deployment-config-name CodeDeployDefault.OneAtATime \
-            --github-location repository=${{ github.repository }},commitId=${{ github.sha }} \
-            --ignore-application-stop-failures
+            --github-location repository=${{ github.repository }},commitId=${{ github.sha }} 
+

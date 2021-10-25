@@ -5,11 +5,15 @@ files:
    destination: /home/ec2-user/disjudge
 file_exists_behavior: OVERWRITE
 hooks:
+  ApplicationStop:
+   - location: scripts/stop
+     timeout: 60
+     runas: root
   AfterInstall:
    - location: scripts/install_dependencies
-     timeout: 300
+     timeout: 500
      runas: root
   ApplicationStart:
    - location: scripts/start
-     timeout: 300
+     timeout: 60
      runas: root
