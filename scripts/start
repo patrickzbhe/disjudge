@@ -5,4 +5,5 @@ set -a
 source .env
 set +a
 cd /home/ec2-user/disjudge/src/
+sudo pkill python
 nohup python3 bot.py > /dev/null 2> /dev/null < /dev/null &
