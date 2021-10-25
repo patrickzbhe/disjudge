@@ -1,8 +1,8 @@
 #!/bin/bash
-cp ~/disjudge-secrets/.env ~/disjudge
+cp /home/ec2-user/disjudge-secrets/.env /home/ec2-user/disjudge
 sudo pip3 install virtualenv
-cd ~/disjudge
+cd /home/ec2-user/disjudge
 virtualenv environment
-cd ~/disjudge
+cd /home/ec2-user/disjudge
 source environment/bin/activate
 pip3 install -r ./src/requirements.txt
