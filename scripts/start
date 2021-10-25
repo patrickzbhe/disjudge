@@ -5,4 +5,4 @@ set -a
 source .env
 set +a
 cd /home/ec2-user/disjudge/src/
-nohup python3 bot.py &
+yes | nohup python3 bot.py &
