@@ -1,6 +1,4 @@
 #!/bin/bash
-cd /home/ec2-user/disjudge-secrets
-git pull
 cp /home/ec2-user/disjudge-secrets/.env /home/ec2-user/disjudge
 sudo pip3 install virtualenv
 cd /home/ec2-user/disjudge
