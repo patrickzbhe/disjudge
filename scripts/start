@@ -5,4 +5,4 @@ set -a
 source .env
 set +a
 cd /home/ec2-user/disjudge/src/
-python3 bot.py &
+python3 bot.py 1 > /dev/null
