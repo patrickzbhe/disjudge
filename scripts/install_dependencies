@@ -1,10 +1,10 @@
 #!/bin/bash
+cd /home/ec2-user/disjudge-secrets
+git pull
+cp /home/ec2-user/disjudge-secrets/.env /home/ec2-user/disjudge
 sudo pip3 install virtualenv
 cd /home/ec2-user/disjudge
 virtualenv environment
-cd /home/ec2-user/
-git clone git@github.com:patrickzebinghe/disjudge-secrets.git
-cp ./disjudge-secrets/.env ./disjudge
 cd /home/ec2-user/disjudge
 source environment/bin/activate
 pip3 install -r ./src/requirements.txt
