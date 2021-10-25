@@ -1,6 +1,8 @@
 #!/bin/bash
 cd /home/ec2-user/disjudge/
 source environment/bin/activate
+set -a
 source .env
+set +a
 cd /home/ec2-user/disjudge/src/
 python3 bot.py
