@@ -73,7 +73,7 @@ class problemsDB:
                 (testcaseID INT NOT NULL AUTO_INCREMENT,
                 problemID INT, input_url VARCHAR(1024), output_url VARCHAR(1024),
                 PRIMARY KEY (testcaseID), 
-                FOREIGN KEY (problemID) REFERENCES problems(problemID))""")
+                FOREIGN KEY (problemID) REFERENCES Problems(problemID))""")
         self.db.commit()
 
     def dump_problems(self):
