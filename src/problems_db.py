@@ -76,6 +76,10 @@ class problemsDB:
                 FOREIGN KEY (problemID) REFERENCES Problems(problemID))""")
         self.db.commit()
 
+    def getProblems(self):
+        self.cursor.execute("SELECT * FROM Problems")
+        return self.cursor.fetchall()
+
     def dump_problems(self):
         self.cursor.execute("SELECT * FROM Problems")
         for res in self.cursor.fetchall():

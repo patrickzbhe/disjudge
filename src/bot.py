@@ -1,13 +1,17 @@
 import discord
 from discord.ext import commands
+import problems_db
 import random
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 DISCORD_BOT_TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
-description = '''An example bot to showcase the discord.ext.commands extension
-module.
-There are a number of utility commands being showcased here.'''
+db = problems_db.problemsDB(
+    "localhost", "root", os.environ['MYSQL_PASSWORD'])
+
+description = '''Online code judge for Discord'''
 
 intents = discord.Intents.default()
 intents.members = True
@@ -22,6 +26,11 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('------')
+
+
+@bot.command()
+async def randomProblemData(ctx):
+    await ctx.send(random.choice(db.getProblems()))
 
 
 @bot.command()
