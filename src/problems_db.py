@@ -28,9 +28,7 @@ class problemsDB:
         self.cursor.execute(
             "CREATE TABLE IF NOT EXISTS Problems (problemID INT NOT NULL AUTO_INCREMENT, problem_name VARCHAR(255), description_url VARCHAR(1024), PRIMARY KEY (problemID))"
         )
-        self.db.commit()
-        self.cursor.close()
-        self.cursor = self.db.cursor()
+
         self.cursor.execute(
             """CREATE TABLE IF NOT EXISTS TestCases 
                 (testcaseID INT NOT NULL AUTO_INCREMENT,
@@ -67,16 +65,15 @@ class problemsDB:
         self.db.commit()
 
     def reset_tables(self):
+        self.cursor.execute("DROP TABLE TestCases")
+        self.cursor.execute("DROP TABLE Problems;")
         self.cursor.execute(
-            """DROP TABLE TestCases; 
-            DROP TABLE Problems;
-            CREATE TABLE IF NOT EXISTS Problems (problemID INT NOT NULL AUTO_INCREMENT, problem_name VARCHAR(255), description_url VARCHAR(1024), PRIMARY KEY (problemID));
-            CREATE TABLE IF NOT EXISTS TestCases 
+            "CREATE TABLE IF NOT EXISTS Problems (problemID INT NOT NULL AUTO_INCREMENT, problem_name VARCHAR(255), description_url VARCHAR(1024), PRIMARY KEY (problemID))")
+        self.cursor.execute("""CREATE TABLE IF NOT EXISTS TestCases 
                 (testcaseID INT NOT NULL AUTO_INCREMENT,
                 problemID INT, input_url VARCHAR(1024), output_url VARCHAR(1024),
                 PRIMARY KEY (testcaseID), 
-                FOREIGN KEY (problemID) REFERENCES problems(problemID));
-            """, multi=True)
+                FOREIGN KEY (problemID) REFERENCES problems(problemID))""")
         self.db.commit()
 
     def dump_problems(self):
