@@ -28,7 +28,6 @@ class problemsDB:
         self.cursor.execute(
             "CREATE TABLE IF NOT EXISTS Problems (problemID INT NOT NULL AUTO_INCREMENT, problem_name VARCHAR(255), description_url VARCHAR(1024), PRIMARY KEY (problemID))"
         )
-        self.db.commit()
         self.cursor.execute(
             """CREATE TABLE IF NOT EXISTS TestCases 
                 (testcaseID INT NOT NULL AUTO_INCREMENT,
