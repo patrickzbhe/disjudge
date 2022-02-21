@@ -1,5 +1,5 @@
 import mysql.connector
-
+import random
 
 class problemsDB:
     def __init__(self, host, user, password):
@@ -79,6 +79,17 @@ class problemsDB:
     def getProblems(self):
         self.cursor.execute("SELECT * FROM Problems")
         return self.cursor.fetchall()
+
+    def getProblemsSize(self):
+        self.cursor.execute("SELECT COUNT(*) FROM Problems")
+        count = self.cursor.fetchall()
+        return count[0][0]
+
+    def getRandomProblem(self):
+        randomRow = random.randint(0,self.getProblemsSize())
+        self.cursor.execute(f"SELECT * FROM Problems LIMIT 1 OFFSET {randomRow}")
+        return self.cursor.fetchall()
+
 
     def dump_problems(self):
         self.cursor.execute("SELECT * FROM Problems")

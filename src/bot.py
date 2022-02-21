@@ -30,7 +30,17 @@ async def on_ready():
 
 @bot.command()
 async def randomProblemData(ctx):
-    await ctx.send(random.choice(db.getProblems()))
+    problem = db.getRandomProblem()
+    if len(problem):
+        problem = problem[0]
+    else:
+        problem = "No Problems. Something probably went wrong."
+
+    await ctx.send(db.getRandomProblem())
+
+@bot.command()
+async def problemCount(ctx):
+    await ctx.send(db.getProblemsSize())
 
 
 @bot.command()
