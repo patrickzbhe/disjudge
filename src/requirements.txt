@@ -9,4 +9,5 @@ mysql-connector-python==8.0.27
 protobuf==3.19.0
 python-dotenv==0.19.1
 typing-extensions==3.10.0.2
+unshare==0.22
 yarl==1.7.0

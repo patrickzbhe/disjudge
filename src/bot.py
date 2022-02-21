@@ -9,6 +9,7 @@ import sys
 from urllib.request import Request, urlopen
 import subprocess
 from threading import Timer
+import unshare
 load_dotenv()
 
 DISCORD_BOT_TOKEN = os.environ['DISCORD_BOT_TOKEN']
@@ -37,6 +38,15 @@ def compare(id, path, case):
         print(ex)
         return False
 '''
+
+def preexec():
+    if os.name != "nt":
+        os.setuid(212)
+        os.chroot("/jail")
+        unshare.unshare(unshare.CLONE_NEWNET)
+
+
+
 def compare(id, path, case):
     input_text = case[2]
     command = "python3"
