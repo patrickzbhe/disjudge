@@ -139,3 +139,6 @@ cython_debug/
 
 # pem file lmao 
 *.pem
+
+# temp files for downloading user code, might not even need this in future
+src/temp/*
