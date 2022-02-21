@@ -36,7 +36,7 @@ async def randomProblemData(ctx):
     else:
         problem = "No Problems. Something probably went wrong."
 
-    await ctx.send(db.getRandomProblem())
+    await ctx.send(problem)
 
 @bot.command()
 async def problemCount(ctx):

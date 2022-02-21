@@ -83,10 +83,10 @@ class problemsDB:
     def getProblemsSize(self):
         self.cursor.execute("SELECT COUNT(*) FROM Problems")
         count = self.cursor.fetchall()
-        return count[0][0]
+        return int(count[0][0])
 
     def getRandomProblem(self):
-        randomRow = random.randint(0,self.getProblemsSize())
+        randomRow = random.randint(0,self.getProblemsSize() - 1)
         self.cursor.execute(f"SELECT * FROM Problems LIMIT 1 OFFSET {randomRow}")
         return self.cursor.fetchall()
 
