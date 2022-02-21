@@ -40,10 +40,13 @@ def compare(id, path, case):
 '''
 
 def preexec():
-    if os.name != "nt":
-        os.setuid(212)
-        os.chroot("/jail")
-        unshare.unshare(unshare.CLONE_NEWNET)
+    try:
+        if os.name != "nt":
+            os.setuid(212)
+            os.chroot("/jail")
+            unshare.unshare(unshare.CLONE_NEWNET)
+    except Exception as ex:
+        print(ex)
 
 
 
