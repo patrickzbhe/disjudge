@@ -46,11 +46,13 @@ def preexec():
             os.chroot("/jail")
             unshare.unshare(unshare.CLONE_NEWNET)
     except Exception as ex:
+        print("A")
         print(ex)
 
 
 
 def compare(id, path, case):
+    print("A")
     input_text = case[2]
     command = "python3"
     if os.name == "nt":
