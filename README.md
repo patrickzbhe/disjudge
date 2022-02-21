@@ -10,3 +10,4 @@ Still working on:
 - Language support (current: Python)
 - Admin page for easy of access to DB
 - Commands to view problems
+- Tbh everything the codebase is so bad rn lmao
