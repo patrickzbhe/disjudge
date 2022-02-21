@@ -139,3 +139,5 @@ cython_debug/
 
 # pem file lmao 
 *.pem
+
+src/temp/*
