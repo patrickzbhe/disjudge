@@ -42,7 +42,7 @@ def compare(id, path, case):
     command = "python3"
     if os.name == "nt":
         command = "python"
-    k = subprocess.Popen(["python", path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, start_new_session=True)
+    k = subprocess.Popen([command, path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, start_new_session=True)
     t = Timer(1,k.kill)
     try:
         t.start()
