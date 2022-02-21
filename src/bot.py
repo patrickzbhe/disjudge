@@ -1,4 +1,3 @@
-from cv2 import TermCriteria_COUNT
 import discord
 from discord.ext import commands
 import problems_db
