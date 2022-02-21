@@ -90,6 +90,9 @@ class problemsDB:
         self.cursor.execute(f"SELECT * FROM Problems LIMIT 1 OFFSET {randomRow}")
         return self.cursor.fetchall()
 
+    def getTestcasesById(self, id):
+        self.cursor.execute(f"SELECT * FROM TestCases where problemId={id}")
+        return self.cursor.fetchall()
 
     def dump_problems(self):
         self.cursor.execute("SELECT * FROM Problems")
