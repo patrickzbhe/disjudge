@@ -26,22 +26,22 @@ class problemsDB:
         )
         self.cursor = self.db.cursor()
         self.cursor.execute(
-            "CREATE TABLE IF NOT EXISTS Problems (problemID INT NOT NULL AUTO_INCREMENT, problem_name VARCHAR(255), description_url VARCHAR(1024), PRIMARY KEY (problemID))"
+            "CREATE TABLE IF NOT EXISTS Problems (problemID INT NOT NULL AUTO_INCREMENT, problem_name VARCHAR(600), description VARCHAR(30000), PRIMARY KEY (problemID))"
         )
 
         self.cursor.execute(
             """CREATE TABLE IF NOT EXISTS TestCases 
                 (testcaseID INT NOT NULL AUTO_INCREMENT,
-                problemID INT, input_url VARCHAR(1024), output_url VARCHAR(1024),
+                problemID INT, input_text TEXT, output_text TEXT,
                 PRIMARY KEY (testcaseID), 
                 FOREIGN KEY (problemID) REFERENCES Problems(problemID))"""
         )
         self.db.commit()
 
-    def insert_problem(self, problem_name, description_url):
+    def insert_problem(self, problem_name, description):
         self.cursor.execute(
-            "INSERT INTO Problems (problem_name, description_url) VALUES ('{0}', '{1}')".format(
-                problem_name, description_url)
+            "INSERT INTO Problems (problem_name, description) VALUES ('{0}', '{1}')".format(
+                problem_name, description)
         )
         self.db.commit()
 
@@ -51,10 +51,10 @@ class problemsDB:
         )
         self.db.commit()
 
-    def insert_testcase(self, problemID, input_url, output_url):
+    def insert_testcase(self, problemID, input_text, output_text):
         self.cursor.execute(
-            "INSERT INTO TestCases (problemID, input_url, output_url) VALUES ({0}, '{1}', '{2}')".format(
-                problemID, input_url, output_url)
+            "INSERT INTO TestCases (problemID, input_text, output_text) VALUES ({0}, '{1}', '{2}')".format(
+                problemID, input_text, output_text)
         )
         self.db.commit()
 
@@ -68,10 +68,10 @@ class problemsDB:
         self.cursor.execute("DROP TABLE TestCases")
         self.cursor.execute("DROP TABLE Problems;")
         self.cursor.execute(
-            "CREATE TABLE IF NOT EXISTS Problems (problemID INT NOT NULL AUTO_INCREMENT, problem_name VARCHAR(255), description_url VARCHAR(1024), PRIMARY KEY (problemID))")
+            "CREATE TABLE IF NOT EXISTS Problems (problemID INT NOT NULL AUTO_INCREMENT, problem_name VARCHAR(255), description VARCHAR(1024), PRIMARY KEY (problemID))")
         self.cursor.execute("""CREATE TABLE IF NOT EXISTS TestCases 
                 (testcaseID INT NOT NULL AUTO_INCREMENT,
-                problemID INT, input_url VARCHAR(1024), output_url VARCHAR(1024),
+                problemID INT, input_text VARCHAR(1024), output_text VARCHAR(1024),
                 PRIMARY KEY (testcaseID), 
                 FOREIGN KEY (problemID) REFERENCES Problems(problemID))""")
         self.db.commit()
