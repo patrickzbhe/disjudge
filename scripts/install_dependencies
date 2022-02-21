@@ -5,4 +5,5 @@ cd /home/ec2-user/disjudge
 virtualenv environment
 cd /home/ec2-user/disjudge
 source environment/bin/activate
+# might need sudo here?
 pip3 install -r ./src/requirements.txt
