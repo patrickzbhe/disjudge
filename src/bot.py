@@ -26,20 +26,18 @@ bot = commands.Bot(command_prefix='?',
                    description=description, intents=intents)
 
 def preexec():
-    try:
-        if os.name != "nt":
-            os.setuid(212)
-            os.chroot("/jail")
-            unshare.unshare(unshare.CLONE_NEWNET)
-    except Exception as ex:
-        print(ex)
+    # no sandboxing on windows
+    if os.name == "posix":
+        os.setuid(212)
+        os.chroot("/jail")
+        unshare.unshare(unshare.CLONE_NEWNET)
+    
 
 def compare(id, path, case):
     input_text = case[2]
     command = "python3"
     if os.name == "nt":
         command = "python"
-    # need to figure out pre exec
     k = subprocess.Popen([command, path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, preexec_fn=preexec)
     t = Timer(1,k.kill)
     try:
