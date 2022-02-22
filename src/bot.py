@@ -28,7 +28,7 @@ bot = commands.Bot(command_prefix='?',
 def preexec():
     # no sandboxing on windows
     if os.name == "posix":
-        #unshare.unshare(unshare.CLONE_NEWNET)
+        unshare.unshare(unshare.CLONE_NEWNET)
         os.setuid(200)
         
     
