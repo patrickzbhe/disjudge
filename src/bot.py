@@ -57,7 +57,6 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-
 @bot.command()
 async def randomProblemData(ctx):
     """Get a random problem from the database"""
@@ -101,6 +100,5 @@ async def submitSolution(ctx, problem_id: int):
     
     os.remove(path)
     await ctx.send("Solution passed all cases!")
-
 
 bot.run(DISCORD_BOT_TOKEN)
