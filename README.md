@@ -2,7 +2,7 @@
 
 Online code judge for discord!
 
-Currently super insecure with no sandboxing of user submitted code.
+Currently super insecure with only a little sandboxing of user submitted code.
 
 Still working on:
 
