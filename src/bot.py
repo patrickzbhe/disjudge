@@ -24,20 +24,6 @@ intents.members = True
 
 bot = commands.Bot(command_prefix='?',
                    description=description, intents=intents)
-'''
-def compare(id, path, case):
-    try:
-        input_text = case[2]
-        # this is how someone steals my credit card number somehow.
-        # todo: sandbox + use threading?
-        k = subprocess.run(f"python {path}", shell=True, check=True, input=input_text.encode(), timeout = 1, capture_output=True)
-        output = k.stdout.decode('utf-8')
-        # Wow this is terrible! lmfao
-        return output.strip().replace("\r\n", "\n") == case[3].strip()
-    except Exception as ex:
-        print(ex)
-        return False
-'''
 
 def preexec():
     try:
@@ -46,29 +32,22 @@ def preexec():
             os.chroot("/jail")
             unshare.unshare(unshare.CLONE_NEWNET)
     except Exception as ex:
-        print("A")
         print(ex)
 
-
-
 def compare(id, path, case):
-    print("A")
     input_text = case[2]
     command = "python3"
     if os.name == "nt":
         command = "python"
-    k = subprocess.Popen(["sudo", command, path], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+    # need to figure out pre exec
+    k = subprocess.Popen([command, path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, preexec_fn=preexec)
     t = Timer(1,k.kill)
     try:
         t.start()
         output = k.communicate(bytes(input_text,"utf-8"))
         k.wait(timeout=1)
-        
-        # this is how someone steals my credit card number somehow.
-        # todo: sandbox + use threading?
        
         output = output[0].decode('utf-8')
-        # Wow this is terrible! lmfao
         return output.strip().replace("\r\n", "\n") == case[3].strip()
     except Exception as ex:
         print(ex)
